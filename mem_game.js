@@ -3,47 +3,6 @@ var cardsFacingUp = [];
 var score=0;
 var board = document.getElementById('board');
 
-
-// function checkForMatch(list){
-// 	var card1 = list[0].style.background;
-// 	var card2 = list[1].style.background;
-// 	if(card1===card2){
-// 		score+=1;
-// 		if(score==6){
-// 			alert('You win!!');
-// 			return true;
-// 		}
-// 	}
-// 	// else{}
-// }
-
-function flip(card){
-	if(facingUpCount<2){
-		styles = window.getComputedStyle(card);
-	console.log(styles.getPropertyValue('background'));
-		console.log(styles);
-	}
-	else if(facingUpCount===2){
-		checkForMatch(cardsFacingUp);
-	}
-};
-
-function setup(){
-  // collection = new DocumentFragment();
-  // for(var i=0; i<12; i++){
-  //   card = document.createElement('div');
-  //   card.classList.add('card', `card$(i+1)`);
-  //   collection.appendChild(card);
-  // }
-  // board.appendChild(collection);
-  var listOfCards = document.getElementsByClassName('card');
-  for(let card of listOfCards){
-    card.addEventListener('click', function(e){
-    flip(card);
-    });
-  }
-}
-
 if(document.readyState !== "loading"){
   setup();
 }
@@ -52,4 +11,53 @@ else{
     event.preventDefault();
     setup();
   });
+}
+
+function setup(){
+  // var collection = new DocumentFragment();
+  // for(var i=0; i<12; i++){
+  //   card = document.createElement('div');
+  // var arr = ['card', `card${i+1}`]
+  //   card.classList.add(...arr);
+  //   collection.appendChild(card);
+  // }
+  // board.appendChild(collection);
+  var listOfCards = document.getElementsByClassName('card');
+  for(let card of listOfCards){
+    card.addEventListener('click', flip);
+  }
+}
+
+function flip(){
+	if(facingUpCount<2){
+		cardsFacingUp.push(this);
+		this.style.border = '1px solid #ebf5fc';
+		facingUpCount+=1;
+		if(facingUpCount==2){
+			setTimeout(checkForMatch(cardsFacingUp), 0);
+		}
+	}
+};
+
+function checkForMatch(list){
+	var card1 = list[0];
+	var card2 = list[1];
+	var bg1 = window.getComputedStyle(card1).getPropertyValue('background-image');
+	var bg2 = window.getComputedStyle(card2).getPropertyValue('background-image');
+	if(bg1==bg2){
+		console.log('match');
+		card1.removeEventListener('click', flip);
+		card2.removeEventListener('click', flip);
+		score+=1;
+		if(score==6){
+			alert('You win!!');
+		}
+	}
+	else{
+		console.log('no match');
+		card1.style.border = '60px solid #ebf5fc';
+		card2.style.border = '60px solid #ebf5fc';
+	}
+	facingUpCount = 0;
+	cardsFacingUp.length = 0;
 }

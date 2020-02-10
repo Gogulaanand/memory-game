@@ -2,6 +2,7 @@
   box-sizing: border-box;
 }
 #board{
+	margin: auto auto;
   width: calc(120px*4 + 20px*3 );
   height: calc(120px*3 + 20px*3);
   display: grid;
@@ -23,17 +24,7 @@
               3px 3px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
-.flipping{
-  animation: lazyload 0.5s cubic-bezier(0.25,0.1, 0.25 ,1);
-}
-@keyframes lazyload{
-  0%{
-    opacity: 0;
-  }
-  100%{
-    opacity: 1;
-  }
-}
+
 .center{
   margin: auto auto;
 }
@@ -84,4 +75,22 @@
   background-repeat: no-repeat;
   background-position: center;
 	border: 60px solid #ebf5fc;
+}
+
+.fadeOut{
+	animation: fadeOut 1s cubic-bezier(0.25,0.1, 0.25 ,1);
+}
+@keyframes fadeOut{
+	to { opacity: 0 }
+}
+.fadeIn{
+  animation: fadeIn 0.5s cubic-bezier(0.25,0.1, 0.25 ,1);
+}
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }
