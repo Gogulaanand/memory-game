@@ -6,18 +6,18 @@
   <script type="text/javascript" scr="x.js"></script>
 </head>
 <body>
-<div id="board">
-  <div class='card card1 pair1'></div>
-  <div class='card card2 pair2'></div>
-  <div class='card card3 pair3'></div>
-  <div class='card card4 pair4'></div>
-  <div class='card card5 pair5'></div>
-  <div class='card card6 pair6'></div>
-  <div class='card card7 pair1'></div>
-  <div class='card card8 pair2'></div>
-  <div class='card card9 pair3'></div>
-  <div class='card card10 pair4'></div>
-  <div class='card card11 pair5'></div>
-  <div class='card card12 pair6'></div>
-</div>
+	<div id="setup">
+		<p> Choose number of sets :
+	<select id="pairsCount">
+		<option value="6">6</option>
+		<option value="8">8</option>
+		<option value="12">12</option>
+	</select>
+	<button type="button" onClick="getDesiredCount('pairsCount')">Generate</button></p>
+	</div>
+	<div id="board">
+	</div>
+	<div id="reset">
+	<button type="button" onClick="getDesiredCount('pairsCount')">Reset</button>
+	</div>
 </body>

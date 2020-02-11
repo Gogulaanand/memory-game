@@ -1,19 +1,18 @@
 *{
   box-sizing: border-box;
 }
+#setup{
+	display: flex;
+	justify-content: center;
+}
 #board{
 	margin: auto auto;
-  width: calc(120px*4 + 20px*3 );
+/*   width: calc(120px*4 + 20px*3 );
   height: calc(120px*3 + 20px*3);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-gap: 20px;
-  background-color: #ebf5fc;
-  background: #ebf5fc;
-  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
-              3px 3px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  grid-gap: 20px; */
 }
 .card{
   width: 120px;
@@ -58,7 +57,7 @@
   background-position: center;
 	border: 60px solid #ebf5fc;
 }
-.pair6{
+.pair8{
   background: url(https://img.icons8.com/emoji/96/000000/smiling-face-with-heart-eyes.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -70,7 +69,7 @@
   background-position: center;
 	border: 60px solid #ebf5fc;
 }
-.pair8{
+.pair6{
   background: url(https://img.icons8.com/emoji/96/000000/beaming-face-with-smiling-eyes.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -84,6 +83,7 @@
 	to { opacity: 0 }
 }
 .fadeIn{
+	background-size: 0 0;
   animation: fadeIn 0.5s cubic-bezier(0.25,0.1, 0.25 ,1);
 }
 @keyframes fadeIn{
@@ -93,4 +93,9 @@
   100%{
     opacity: 1;
   }
+}
+#reset{
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
 }
